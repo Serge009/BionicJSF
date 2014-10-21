@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3c.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
+<html xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
 </h:head>
 <h:body>
 
-    <h:form>
-        <p:inputText value="#{loginBean.name}"/>
-        <p:password id="turkishFeedback" value="#{loginBean.password}" feedback="true"
-                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
-                    goodLabel="Orta seviye" strongLabel="Güçlü"/>
-        <h:commandButton action="login" value="Submit"/>
-    </h:form>
+    <p:growl id="growl" life="5000" />
 
+    <h:form>
+        <h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
+            <f:facet name="header">
+                <p:messages id="msgs" />
+            </f:facet>
+
+            <p:outputLabel for="firstname" value="Firstname:" />
+            <p:inputText id="firstname" value="#{loginBean.name}" />
+
+            <p:outputLabel for="surname" value="Surname:" />
+            <p:password id="surname" value="#{loginBean.password}" required="true" requiredMessage="Surname is required." />
+        </h:panelGrid>
+
+        <p:commandButton value="Form" id="btnForm" process="@form" update="grid" actionListener="#{loginBean.save}" />
+        <!--<h:commandButton action="login" value="Submit"/>-->
+
+    </h:form>
+    <!--<p:commandButton value="Ajax Submit" id="ajax" update="growl" actionListener="" styleClass="ui-priority-primary" />-->
 </h:body>
 </html>
