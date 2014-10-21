@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+</h:head>
+<h:body>
+
+    <h:form>
+        <p:inputText value="#{loginBean.name}"/>
+        <p:password id="turkishFeedback" value="#{loginBean.password}" feedback="true"
+                    promptLabel="Lütfen şifre giriniz" weakLabel="Zayıf"
+                    goodLabel="Orta seviye" strongLabel="Güçlü"/>
+        <h:commandButton action="login" value="Submit"/>
+    </h:form>
+
+</h:body>
+</html>
