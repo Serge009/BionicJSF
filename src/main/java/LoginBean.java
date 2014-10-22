@@ -38,4 +38,8 @@ public class LoginBean {
         FacesContext.getCurrentInstance().addMessage(null,
                 new FacesMessage("Welcome " + name));
     }
+
+    public void handleKeyEvent() {
+        name = password.toUpperCase();
+    }
 }

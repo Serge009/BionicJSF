@@ -9,22 +9,25 @@
 <h:body>
 
 
-
     <h:form>
-        <p:growl id="growl" life="5000" />
+        <p:growl id="growl" life="5000"/>
         <h:panelGrid id="grid" cellpadding="5" columns="2" style="margin-bottom:10px">
             <f:facet name="header">
-                <p:messages id="msgs" />
+                <p:messages id="msgs"/>
             </f:facet>
 
-            <p:outputLabel for="firstname" value="Firstname:" />
-            <p:inputText id="firstname" value="#{loginBean.name}" />
+            <p:outputLabel for="firstname" value="Firstname:"/>
+            <p:inputText id="firstname" value="#{loginBean.name}"/>
 
-            <p:outputLabel for="surname" value="Surname:" />
-            <p:password id="surname" value="#{loginBean.password}" required="true" requiredMessage="Surname is required." />
+            <p:outputLabel for="surname" value="Surname:"/>
+            <p:password id="surname" value="#{loginBean.password}" required="true"
+                        requiredMessage="Surname is required." feedback="true">
+                <p:ajax event="keyup" listener="#{loginBean.handleKeyEvent}" update="firstname" />
+            </p:password>
         </h:panelGrid>
 
-        <p:commandButton value="Form" id="btnForm" process="@form" update="grid growl" actionListener="#{loginBean.save}" />
+        <p:commandButton value="Form" id="btnForm" process="@form" update="grid growl"
+                         actionListener="#{loginBean.save}"/>
         <!--<h:commandButton action="login" value="Submit"/>-->
 
     </h:form>
